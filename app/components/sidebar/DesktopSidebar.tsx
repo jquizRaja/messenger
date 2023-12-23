@@ -1,9 +1,9 @@
 "use client";
-import useRoutes from "@/app/hooks/UseRoutes";
+import useRoutes from "@/app/hooks/useRoutes";
 import { User } from "@prisma/client";
 import React, { useState } from "react";
-import DesktopItem from "./DesktopItem";
 import Avatar from "../Avatar";
+import DesktopItem from "./DesktopItem";
 
 interface DesktopSidebarProps {
   currentUser: User;
