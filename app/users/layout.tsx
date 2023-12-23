@@ -7,8 +7,9 @@ export default async function UsersLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const users = getUsers();
+  const users = await getUsers();
   return (
+    // @ts-expect-error Server Component
     <Sidebar>
       <div className="h-full">
         <UserList items={users} />

@@ -15,7 +15,7 @@ const getUsers= async()=>{
       },
       where:{
          NOT:{
-          email:session.user.email,
+          email: session.user.email,
          }
       }
     })
