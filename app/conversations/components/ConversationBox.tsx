@@ -8,6 +8,7 @@ import { FullConversationType } from "@/app/types";
 import clsx from "clsx";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
+import AvatarGroup from "@/app/components/AvatarGroup";
 
 interface ConversationBoxProps {
   data: FullConversationType;
@@ -62,8 +63,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         `w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer p-3`,
         selected ? "bg-neutral-100" : "bg-white"
       )}
-      onClick={handleClick}>
-      <Avatar user={otherUser} />
+      onClick={handleClick}
+    >
+      {data.isGroup ? <AvatarGroup users={data.users} /> : <Avatar user={otherUser} />}
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <div
@@ -72,7 +74,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
           justify-between
           items-center
           mb-1
-          ">
+          "
+          >
             <p className="text-md font-medium text-gray-900">
               {data.name || otherUser.name}
             </p>
@@ -86,7 +89,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
             className={clsx(
               `truncate text-sm`,
               hasSeen ? "text-gray-500" : "text-black font-medium"
-            )}>
+            )}
+          >
             {lastMessageText}
           </p>
         </div>
